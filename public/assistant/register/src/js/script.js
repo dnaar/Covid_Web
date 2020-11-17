@@ -125,3 +125,7 @@ function closeMap() {
         haddress.disabled = false;
     }
 }
+
+function clsession() {
+    document.forms["log_out"].submit();
+}

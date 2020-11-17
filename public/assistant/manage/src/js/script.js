@@ -109,8 +109,6 @@ async function pat_indexing(index) {
 }
 async function updateState() {
     const nDate = document.getElementById("up_date").value;
-    // const tDate = new Date();
-    // const nDate = tDate.getFullYear() + "-" + (tDate.getMonth() + 1) + "-" + tDate.getDate();
     if (nDate == "") {
         alert("Por favor ingresar la fecha de actualización.");
     } else {
@@ -121,4 +119,8 @@ async function updateState() {
             document.getElementById("update_btn").disabled = true;
         }
     }
+}
+
+function clsession() {
+    document.forms["log_out"].submit();
 }
