@@ -17,26 +17,6 @@ Released   : 20120624
     <title>Clínica del Norte: COVID-19</title>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <link rel="stylesheet" type="text/css" href="src/css/style.css" />
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script type="text/javascript" src="jquery.dropotron-1.0.js"></script>
-    <script type="text/javascript" src="jquery.slidertron-1.1.js"></script>
-    <script type="text/javascript">
-        $(function() {
-            $('#menu > ul').dropotron({
-                mode: 'fade',
-                globalOffsetY: 11,
-                offsetY: -15
-            });
-            $('#slider').slidertron({
-                viewerSelector: '.viewer',
-                indicatorSelector: '.indicator span',
-                reelSelector: '.reel',
-                slidesSelector: '.slide',
-                speed: 'slow',
-                advanceDelay: 4000
-            });
-        });
-    </script>
 </head>
 
 <body>
@@ -51,127 +31,28 @@ Released   : 20120624
         </div>
         <div id="menu">
             <ul>
-                <li class="last" style="padding-right: 110px;"><a href="#">Menú</a></li>
-                <li class="first">
-                    <span class="opener">Estadísticas del COVID-19<b></b></span>
-                    <ul>
-                        <li><a href="/medic/search">Búsqueda</a></li>
-                        <li><a href="/medic/resume">Mapa general</a></li>
-                    </ul>
-                </li>
-
+                <li><a href="/">Menú</a></li>
+                <li><a href="/medic/search">Búsqueda</a></li>
+                <li><a href="/medic/resume">Mapa general</a></li>
+                <li onclick="clsession();"><a href="#">Salir</a></li>
             </ul>
             <br class="clearfix" />
         </div>
 
         <div id="page">
-            <div id="content">
-                <div class="box">
-                    <h2 style="line-height: 45px;">Bienvenidos a la página de gestión de casos COVID-19 de la clínica del Norte.</h2>
-                    <p>
-                        This is <strong>Big Business 2.0</strong>, a free and fully standards-compliant CSS website template by <a href="http://templated.co" rel="nofollow">TEMPLATED</a>. The pictures in this template are from <a href="http://fotogrph.com/">Fotogrph</a>.
-                        This free CSS template is released under the <a href="http://templated.co/license">Creative Commons Attribution</a> license, so you're pretty much free to do whatever you want with it (even use it commercially) provided you credit
-                        us in some way. Have fun :)
-                    </p>
-                    <form action="/logout?_method=DELETE" method="POST">
-                        <input type="submit" value="Salir" style="margin-top:10px">
-                    </form>
-                </div>
-                <div class="box" id="content-box1">
-                    <h3>Mapa resumen</h3>
-                    <ul class="section-list">
-                        <li class="first">
-                            <img class="pic alignleft" src="images/pic01.jpg" width="70" height="70" alt="" />
-                            <span>Condimentum et porttitor tristique nec aliquet magnis pretium quam nibh.</span>
-                        </li>
-                        <li>
-                            <img class="pic alignleft" src="images/pic02.jpg" width="70" height="70" alt="" />
-                            <span>Posuere elementum sapien justo tortor nulla fringilla suspendisse nascetur.</span>
-                        </li>
-                        <li class="last">
-                            <img class="pic alignleft" src="images/pic03.jpg" width="70" height="70" alt="" />
-                            <span>Ipsum quis vestibulum feugiat congue nunc laoreet volutpat lorem ipsum sociis.</span>
-                        </li>
-                    </ul>
-                </div>
-                <div class="box" id="content-box1">
-                    <h3>Mauris justo</h3>
-                    <ul class="section-list">
-                        <li class="first">
-                            <img class="pic alignleft" src="images/pic01.jpg" width="70" height="70" alt="" />
-                            <span>Condimentum et porttitor tristique nec aliquet magnis pretium quam nibh.</span>
-                        </li>
-                        <li>
-                            <img class="pic alignleft" src="images/pic02.jpg" width="70" height="70" alt="" />
-                            <span>Posuere elementum sapien justo tortor nulla fringilla suspendisse nascetur.</span>
-                        </li>
-                        <li class="last">
-                            <img class="pic alignleft" src="images/pic03.jpg" width="70" height="70" alt="" />
-                            <span>Ipsum quis vestibulum feugiat congue nunc laoreet volutpat lorem ipsum sociis.</span>
-                        </li>
-                    </ul>
-                </div>
-                <br class="clearfix" />
-            </div>
-            <div id="sidebar">
-                <div class="box">
-                    <h3>Cursus magnis</h3>
-                    <ul class="list">
-                        <li class="first"><a href="#">Adipiscing tincidunt</a></li>
-                        <li><a href="#">Euismod elit sollicitudin</a></li>
-                        <li><a href="#">Dolor magnis et lacinia</a></li>
-                        <li><a href="#">Mauris ornare aenean</a></li>
-                        <li class="last"><a href="#">Ante semper fringilla</a></li>
-                    </ul>
-                </div>
-                <div class="box">
-                    <h3>Morbi at varius</h3>
-                    <div class="date-list">
-                        <ul class="list date-list">
-                            <li class="first"><span class="date">2/08</span> <a href="#">Quam sed tempus</a></li>
-                            <li><span class="date">2/05</span> <a href="#">Lorem et vestibulum</a></li>
-                            <li><span class="date">2/01</span> <a href="#">Risus aenean tellus</a></li>
-                            <li class="last"><span class="date">1/31</span> <a href="#">Tristique et primis</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+            <p>
+                Bienvenid@ Méd. <text id="nombre"></text><text id="apellido"></text>.
+            </p>
             <br class="clearfix" />
         </div>
-        <div id="slider">
-            <div class="viewer">
-                <div class="reel">
-                    <div class="slide">
-                        <img src="images/slide01.jpg" alt="" />
-                    </div>
-                    <div class="slide">
-                        <img src="images/slide02.jpg" alt="" />
-                    </div>
-                    <div class="slide">
-                        <img src="images/slide03.jpg" alt="" />
-                    </div>
-                    <div class="slide">
-                        <img src="images/slide04.jpg" alt="" />
-                    </div>
-                    <div class="slide">
-                        <img src="images/slide05.jpg" alt="" />
-                    </div>
-                </div>
-            </div>
-            <div class="indicator">
-                <span>1</span>
-                <span>2</span>
-                <span>3</span>
-                <span>4</span>
-                <span>5</span>
-            </div>
-        </div>
+        <form name="log_out" action="/logout?_method=DELETE" method="POST" style="display:none">
+            <input type="submit" value="Salir" style="margin-top:10px">
+        </form>
         <div id="page-bottom">
             <div id="page-bottom-content">
                 <h3>Integrantes del grupo</h3>
                 <li>Maria Alejandra Caballero Russi</li>
                 <li>David Elías Naar Torres</li>
-                <li>Eder Pineda Jimenez</li>
                 <li>Juan Pablo Sarmiento Gómez</li>
             </div>
 
@@ -182,5 +63,18 @@ Released   : 20120624
         &copy; Untitled. All rights reserved. Design by <a href="http://templated.co" rel="nofollow">TEMPLATED</a>. Photos by <a href="http://fotogrph.com/">Fotogrph</a>.
     </div>
 </body>
+
+<script>
+    function clsession() {
+        document.forms["log_out"].submit();
+    }
+    async function getCredentials() {
+        const response = await fetch('/user/credentials');
+        const cred = await response.json();
+        document.getElementById("nombre").innerHTML = cred[0].name;
+        document.getElementById("apellido").innerHTML = " " + cred[0].lname;
+    }
+    getCredentials();
+</script>
 
 </html>

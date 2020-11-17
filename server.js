@@ -196,6 +196,24 @@ server.get('/medic/resume/loadcases', checkAuthenticatedMedic, (req, res) => {
     });
 });
 
+server.get('/user/credentials', checkAuthentication, (req, res) => {
+    var sql;
+    if (req.user.role == 1) {
+        sql = `select name, lname from medic_data where id=${req.user.id}`;
+    }
+    if (req.user.role == 2) {
+        sql = `select name, lname from assistant_data where id=${req.user.id}`;
+    }
+    database.query(sql, (err, result) => {
+        if (err) {
+            res.end(JSON.stringify([]));
+            return;
+        }
+        res.end(JSON.stringify(result));
+    })
+});
+
+
 // Authentication Functions
 function checkAuthenticatedAdmin(req, res, next) {
     if (req.isAuthenticated()) {
@@ -261,6 +279,14 @@ function checkNotAuthenticated(req, res, next) {
         }
     }
 
+}
+
+function checkAuthentication(req, res, next) {
+    if (req.isAuthenticated()) {
+        return next();
+    } else {
+        res.redirect("/login");
+    }
 }
 
 // Log Out Method
