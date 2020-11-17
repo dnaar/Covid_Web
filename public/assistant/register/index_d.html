@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="src/css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
+    <title>Registro de casos</title>
+</head>
+
+<body>
+    <h1>BIENVENIDO AL REGISTRO DE CASOS</h1>
+    <div id="form_div">
+        <form name="case_form" action="/assistant/register/newcase" method="post">
+            <label for="name">Nombre:</label><br>
+            <input name="name" type="text"><br><br>
+            <label for="lname">Apellido:</label><br>
+            <input name="lname" type="text"><br><br>
+            <label for="id">Cédula:</label><br>
+            <input name="id" type="number"><br><br>
+            <label for="gender">Sexo:</label><br>
+            <select name="gender">
+                <option></option>
+                <option value=0>Mujer</option>
+                <option value=1>Hombre</option>
+                <option value=2>Otro</option>
+            </select><br><br>
+            <label for="bdate">Fecha de nacimiento:</label><br><br>
+            <input name="bdate" type="date"><br><br>
+            <label for="haddress">Ubicación del residencia:</label><br>
+            <input name="haddress" type="text" onfocus="initializeMap(0)"><br><br>
+            <label for="waddress">Ubicación del trabajo:</label><br>
+            <input name="waddress" type="text" onfocus="initializeMap(1)"><br><br>
+            <label for="tres">Resultado de examen:</label><br>
+            <select name="tres">
+                <option></option>
+                <option value=0>Negativo</option>
+                <option value=1>Positivo</option>
+            </select><br><br>
+            <label for="tdate">Fecha de examen:</label><br><br>
+            <input name="tdate" type="date"><br><br>
+            <button type="button" onclick="validateForm();" style="margin-top:10px">Confirmar</button>
+        </form>
+    </div>
+
+    <div id="mapcontainer">
+        <div id="map"></div>
+        <button type="button" onclick="closeMap()">Aceptar</button>
+    </div>
+
+</body>
+
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+<script src="src/js/script.js"></script>
+
+</html>
