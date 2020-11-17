@@ -57,3 +57,7 @@ function validateForm() {
     }
 
 }
+
+function clsession() {
+    document.forms["log_out"].submit();
+}
