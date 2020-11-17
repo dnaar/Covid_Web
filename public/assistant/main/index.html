@@ -10,60 +10,69 @@ Version    : 1.0
 Released   : 20120624
 -->
 <html xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
-<meta name="description" content="" />
-<meta name="keywords" content="" />
-<title>Clínica del Norte: COVID-19</title>
-<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<link rel="stylesheet" type="text/css" href="src/css/style.css" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <title>Clínica del Norte: COVID-19</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="src/css/style.css" />
 </head>
+
 <body>
-<div id="wrapper">
-	<div id="header">
-		<div id="logo">
-			<h1><a href="#">Clínica del Norte: COVID-19</a></h1>
-		</div>
-		<div id="slogan">
-			<h2>Asistente</h2>
-		</div>
-	</div>
-	<div id="menu">
-		<ul>
-			<li class="last"><a href="#">Menú</a></li>
-			<li><a href="/assistant/register">Registro de casos</a></li>
-			<li><a href="/assistant/manage">Gestión de casos</a></li>
-			<li class="last" style="padding-right: 110px;" onclick="clsession();"><a href="#">Salir</a></li>
-		</ul>
-		<br class="clearfix" />
-	</div>
-	
-	<form name="log_out" action="/logout?_method=DELETE" method="POST" style="display:none">
+    <div id="wrapper">
+        <div id="header">
+            <div id="logo">
+                <h1><a href="#">Clínica del Norte: COVID-19</a></h1>
+            </div>
+            <div id="slogan">
+                <h2>Asistente</h2>
+            </div>
+        </div>
+        <div id="menu">
+            <ul>
+                <li class="last"><a href="#">Menú</a></li>
+                <li><a href="/assistant/register">Registro de casos</a></li>
+                <li><a href="/assistant/manage">Gestión de casos</a></li>
+                <li onclick="clsession();"><a href="#">Salir</a></li>
+            </ul>
+            <br class="clearfix" />
+        </div>
+
+        <form name="log_out" action="/logout?_method=DELETE" method="POST" style="display:none">
             <input type="submit" value="Salir" style="margin-top:10px">
         </form>
-	<div id="page">
-		<div id="content">
-			<div class="box">
-				<h2 style="line-height: 45px;">Bienvenidos a la página de gestión de casos COVID-19 de la clínica del Norte.</h2>
-				<p>
-					Esta página web está orientada a la gestión y visualización de datos de COVID-19.
-				</p>
-			</div>
-		</div>
-		<br class="clearfix" />
-	</div>
-	<div id="page-bottom">
-		<div id="page-bottom-content">
-			<h3>Integrantes del grupo</h3>
-			<li>Maria Alejandra Caballero Russi</li>
-			<li>David Elías Naar Torres</li>
-			<li>Juan Pablo Sarmiento Gómez</li>
-		</div>
-		
-		<br class="clearfix" />
-	</div>
-</div>
-<div id="footer">
-	&copy; Untitled. All rights reserved. Design by <a href="http://templated.co" rel="nofollow">TEMPLATED</a>. Photos by <a href="http://fotogrph.com/">Fotogrph</a>.
-</div>
+        <div id="page">
+            <div id="content">
+                <div class="box">
+                    <h2 style="line-height: 45px;">Bienvenidos a la página de gestión de casos COVID-19 de la clínica del Norte.</h2>
+                    <p>
+                        Esta página web está orientada a la gestión y visualización de datos de COVID-19.
+                    </p>
+                </div>
+            </div>
+            <br class="clearfix" />
+        </div>
+        <div id="page-bottom">
+            <div id="page-bottom-content">
+                <h3>Integrantes del grupo</h3>
+                <li>Maria Alejandra Caballero Russi</li>
+                <li>David Elías Naar Torres</li>
+                <li>Juan Pablo Sarmiento Gómez</li>
+            </div>
+
+            <br class="clearfix" />
+        </div>
+    </div>
+    <div id="footer">
+        &copy; Untitled. All rights reserved. Design by <a href="http://templated.co" rel="nofollow">TEMPLATED</a>. Photos by <a href="http://fotogrph.com/">Fotogrph</a>.
+    </div>
 </body>
+
+<script>
+    function clsession() {
+        document.forms["log_out"].submit();
+    }
+</script>
+
 </html>
