@@ -1,58 +1,96 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--
+Design by TEMPLATED
+http://templated.co
+Released for free under the Creative Commons Attribution License
 
+Name       : Big Business 2.0
+Description: A two-column, fixed-width design with a bright color scheme.
+Version    : 1.0
+Released   : 20120624
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="src/css/style.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
-    <title>Registro de casos</title>
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<title>Clínica del Norte: COVID-19</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="src/css/style.css" />
 </head>
-
 <body>
-    <h1>BIENVENIDO AL REGISTRO DE CASOS</h1>
-    <div id="form_div">
-        <form name="case_form" action="/assistant/register/newcase" method="post">
-            <label for="name">Nombre:</label><br>
-            <input name="name" type="text"><br><br>
-            <label for="lname">Apellido:</label><br>
-            <input name="lname" type="text"><br><br>
-            <label for="id">Cédula:</label><br>
-            <input name="id" type="number"><br><br>
-            <label for="gender">Sexo:</label><br>
-            <select name="gender">
-                <option></option>
-                <option value=0>Mujer</option>
-                <option value=1>Hombre</option>
-                <option value=2>Otro</option>
-            </select><br><br>
-            <label for="bdate">Fecha de nacimiento:</label><br><br>
-            <input name="bdate" type="date"><br><br>
-            <label for="haddress">Ubicación del residencia:</label><br>
-            <input name="haddress" type="text" onfocus="initializeMap(0)"><br><br>
-            <label for="waddress">Ubicación del trabajo:</label><br>
-            <input name="waddress" type="text" onfocus="initializeMap(1)"><br><br>
-            <label for="tres">Resultado de examen:</label><br>
-            <select name="tres">
-                <option></option>
-                <option value=0>Negativo</option>
-                <option value=1>Positivo</option>
-            </select><br><br>
-            <label for="tdate">Fecha de examen:</label><br><br>
-            <input name="tdate" type="date"><br><br>
-            <button type="button" onclick="validateForm();" style="margin-top:10px">Confirmar</button>
-        </form>
-    </div>
-
-    <div id="mapcontainer">
-        <div id="map"></div>
-        <button type="button" onclick="closeMap()">Aceptar</button>
-    </div>
-
+<div id="wrapper">
+	<div id="header">
+		<div id="logo">
+			<h1><a href="#">Clínica del Norte: COVID-19</a></h1>
+		</div>
+		<div id="slogan">
+			<h2>Registro de casos</h2>
+		</div>
+	</div>
+	<div id="menu">
+		<ul>
+			<li class="last"><a href="#">Menú</a></li>
+			<li><a href="/assistant/register">Registro de casos</a></li>
+			<li><a href="/assistant/manage">Gestión de casos</a></li>
+			<li class="last" style="padding-right: 110px;" onclick="clsession();"><a href="#">Salir</a></li>
+			</ul>
+		<br class="clearfix" />
+	</div>
+	<form name="log_out" action="/logout?_method=DELETE" method="POST" style="display:none">
+        <input type="submit" value="Salir" style="margin-top:10px">
+    </form>
+	<div id="form_div">
+		<form name="case_form" action="/assistant/register/newcase" method="post">
+			<h1>Registre el caso mijo</h1>
+			<br><br>
+			<label for="name">Nombre:</label><br>
+			<input name="name" type="text"><br><br>
+			<label for="lname">Apellido:</label><br>
+			<input name="lname" type="text"><br><br>
+			<label for="id">Cédula:</label><br>
+			<input name="id" type="number"><br><br>
+			<label for="gender">Sexo:</label><br>
+			<select name="gender">
+				<option></option>
+				<option value=0>Mujer</option>
+				<option value=1>Hombre</option>
+				<option value=2>Otro</option>
+			</select><br><br>
+			<label for="bdate">Fecha de nacimiento:</label><br><br>
+			<input name="bdate" type="date"><br><br>
+			<label for="haddress">Ubicación del residencia:</label><br>
+			<input name="haddress" type="text" onfocus="initializeMap(0)"><br><br>
+			<label for="waddress">Ubicación del trabajo:</label><br>
+			<input name="waddress" type="text" onfocus="initializeMap(1)"><br><br>
+			<label for="tres">Resultado de examen:</label><br>
+			<select name="tres">
+				<option></option>
+				<option value=0>Negativo</option>
+				<option value=1>Positivo</option>
+			</select><br><br>
+			<label for="tdate">Fecha de examen:</label><br><br>
+			<input name="tdate" type="date"><br><br>
+			<button type="button" onclick="validateForm();" style="margin-top:10px">Confirmar</button>
+		</form>
+	</div>
+	
+		<div id="mapcontainer">
+			<div id="map"></div>
+			<button type="button" onclick="closeMap()">Aceptar</button>
+		</div>
+	<div id="page-bottom">
+		<div id="page-bottom-content">
+			<h3>Integrantes del grupo</h3>
+			<li>Maria Alejandra Caballero Russi</li>
+			<li>David Elías Naar Torres</li>
+			<li>Juan Pablo Sarmiento Gómez</li>
+		</div>
+		
+		<br class="clearfix" />
+	</div>
+</div>
+<div id="footer">
+	&copy; Untitled. All rights reserved. Design by <a href="http://templated.co" rel="nofollow">TEMPLATED</a>. Photos by <a href="http://fotogrph.com/">Fotogrph</a>.
+</div>
 </body>
-
-<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
-<script src="src/js/script.js"></script>
-
 </html>
