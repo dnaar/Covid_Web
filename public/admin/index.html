@@ -1,42 +1,85 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--
+Design by TEMPLATED
+http://templated.co
+Released for free under the Creative Commons Attribution License
+
+Name       : Big Business 2.0
+Description: A two-column, fixed-width design with a bright color scheme.
+Version    : 1.0
+Released   : 20120624
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="src/css/style.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <title>Administrador</title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <title>Clínica del Norte: COVID-19</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="src/css/style.css" />
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 </head>
+<script src="src/js/script.js"></script>
 
 <body>
-    <h1>Admin add users</h1>
-    <div id="user_form">
-        <form name="user_form" action="/admin/addnewuser" method="post">
-            <label for="usr_name">Nombre:</label><br>
-            <input name="usr_name" type="text"><br><br>
-            <label for="usr_lname">Apellido:</label><br>
-            <input name="usr_lname" type="text"><br><br>
-            <label for="usr_id">Cédula:</label><br>
-            <input name="usr_id" type="number"><br><br>
-            <label for="usr_role">Rol:</label><br>
-            <select name="usr_role">
-                <option></option>
-                <option value=1>Médico</option>
-                <option value=2>Ayudante</option>
-            </select><br>
-            <label for="usr_username">Nombre de usuario:</label><br><br>
-            <input name="usr_username" type="text"><span id='displayError3' class='displayError'>Mínimo 6 caracteres.</span><br><br>
-            <label for="usr_password">Contraseña:</label><br>
-            <input name="usr_password" type="password"><span id='displayError4' class='displayError'>Mínimo 8 caracteres.</span><br><br>
-            <button type="button" onclick="validateForm();" style="margin-top:10px">Confirmar</button>
-        </form>
-        <form action="/logout?_method=DELETE" method="POST">
+    <div id="wrapper">
+        <div id="header">
+            <div id="logo">
+                <h1><a href="#">Clínica del Norte: COVID-19</a></h1>
+            </div>
+            <div id="slogan">
+                <h2>Administrador</h2>
+            </div>
+        </div>
+        <div id="menu">
+            <ul>
+                <li class="last" style="padding-right: 110px;"><a href="/">Menú</a></li>
+                <li class="last" style="padding-right: 110px;" onclick="clsession();"><a href="#">Salir</a></li>
+            </ul>
+            <br class="clearfix" />
+        </div>
+        <form name="log_out" action="/logout?_method=DELETE" method="POST" style="display:none">
             <input type="submit" value="Salir" style="margin-top:10px">
         </form>
+        <div id="page">
+            <h1>Ingresar nuevos usuarios al sistema:</h1><br>
+            <div id="user_form">
+                <form name="user_form" action="/admin/addnewuser" method="post">
+                    <label for="usr_name">Nombre:</label><br>
+                    <input name="usr_name" type="text"><br>
+                    <label for="usr_lname">Apellido:</label><br>
+                    <input name="usr_lname" type="text"><br>
+                    <label for="usr_id">Cédula:</label><br>
+                    <input name="usr_id" type="number"><br>
+                    <label for="usr_role">Rol:</label><br>
+                    <select name="usr_role">
+							<option></option>
+							<option value=1>Médico</option>
+							<option value=2>Ayudante</option>
+						</select><br>
+                    <label for="usr_username">Nombre de usuario:</label><br>
+                    <input name="usr_username" type="text"><span id='displayError3' class='displayError'>   Mínimo 6 caracteres.</span><br>
+                    <label for="usr_password">Contraseña:</label><br>
+                    <input name="usr_password" type="password"><span id='displayError4' class='displayError'>   Mínimo 8 caracteres.</span><br>
+                    <button id="btn" type="button" onclick="validateForm();" style="margin-top:10px">Confirmar</button>
+                </form>
+            </div>
+            <br class="clearfix" />
+        </div>
+        <div id="page-bottom">
+            <div id="page-bottom-content">
+                <h3>Integrantes del grupo</h3>
+                <li>Maria Alejandra Caballero Russi</li>
+                <li>David Elías Naar Torres</li>
+                <li>Juan Pablo Sarmiento Gómez</li>
+            </div>
+
+            <br class="clearfix" />
+        </div>
+    </div>
+    <div id="footer">
+        &copy; Untitled. All rights reserved. Design by <a href="http://templated.co" rel="nofollow">TEMPLATED</a>. Photos by <a href="http://fotogrph.com/">Fotogrph</a>.
     </div>
 </body>
-
-<script src="src/js/script.js"></script>
 
 </html>
