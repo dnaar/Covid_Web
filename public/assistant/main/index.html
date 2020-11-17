@@ -45,7 +45,7 @@ Released   : 20120624
         <div id="page">
             <div id="content">
                 <div class="box">
-                    <h2 style="line-height: 45px;">Bienvenidos a la página de gestión de casos COVID-19 de la clínica del Norte.</h2>
+                    <h1>Bienvenid@ Asist. <text id="nombre"></text><text id="apellido"></text>.</h1><br>
                     <p>
                         Esta página web está orientada a la gestión y visualización de datos de COVID-19.
                     </p>
@@ -73,6 +73,13 @@ Released   : 20120624
     function clsession() {
         document.forms["log_out"].submit();
     }
+    async function getCredentials() {
+        const response = await fetch('/user/credentials');
+        const cred = await response.json();
+        document.getElementById("nombre").innerHTML = cred[0].name;
+        document.getElementById("apellido").innerHTML = " " + cred[0].lname;
+    }
+    getCredentials();
 </script>
 
 </html>
