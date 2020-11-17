@@ -32,6 +32,8 @@ server.use(passport.session());
 server.get('/admin', checkAuthenticatedAdmin);
 // Medic Routes
 server.get('/medic', checkAuthenticatedMedic);
+server.get('/medic/resume', checkAuthenticatedMedic);
+server.get('/medic/search', checkAuthenticatedMedic);
 // Assistant Routes
 server.get('/assistant', checkAuthenticatedAssistant);
 server.get('/assistant/register', checkAuthenticatedAssistant);
@@ -53,7 +55,6 @@ server
     }));
 
 server.post('/admin/addnewuser', checkAuthenticatedAdmin, (req, res) => {
-    console.log(req.body);
     var sql;
     const newUsr = { id: parseInt(req.body.usr_id), username: req.body.usr_username, password: req.body.usr_password, role: parseInt(req.body.usr_role) };
     const newUsrData = { id: parseInt(req.body.usr_id), name: req.body.usr_name, lname: req.body.usr_lname };
@@ -139,17 +140,61 @@ server.get('/assistant/manage/u_states/:id/:state/:date', checkAuthenticatedAssi
     res.end();
 });
 
+server.get('/medic/search/filter/:id/:cc', checkAuthenticatedMedic, (req, res) => {
+    var options = "";
+    plus1 = false;
+    if (req.params.id != '0') {
+        options = options + ` casecode=${req.params.id}`;
+        plus1 = true;
+    }
+    if (req.params.cc != '0') {
+        if (plus1) {
+            options = options + ` and idpatient=${req.params.cc}`;
+        } else {
+            options = options + ` idpatient=${req.params.cc}`;
+        }
+    }
+    let sql = 'select * from cases where' + options;
+    database.query(sql, (err, result) => {
+        if (err) {
+            res.end(JSON.stringify([]));
+            return;
+        }
+        res.end(JSON.stringify(result));
+    });
+});
 
+server.get('/medic/search/states/:id', checkAuthenticatedMedic, (req, res) => {
+    let sql = `Select idcase, state, idstate, state_date From case_state cs, states ss  where cs.idcase=${req.params.id} and cs.idstate=ss.idstates order by state_date`;
+    database.query(sql, (err, result) => {
+        if (err) {
+            res.end(JSON.stringify([]));
+            return;
+        }
+        res.end(JSON.stringify(result));
+    });
+});
 
-
-
-
-
-
-
-
-
-
+server.get('/medic/resume/loaddata', checkAuthenticatedMedic, (req, res) => {
+    let sql = 'select idstate, res_address from case_state cs, (SELECT idcase, max(state_date) as max_date FROM case_state group by idcase) md, cases cc where cs.idcase = md.idcase and cs.state_date=md.max_date and cs.idcase = cc.casecode and cc.test_result=1';
+    database.query(sql, (err, result) => {
+        if (err) {
+            res.end(JSON.stringify([]));
+            return;
+        }
+        res.end(JSON.stringify(result));
+    });
+});
+server.get('/medic/resume/loadcases', checkAuthenticatedMedic, (req, res) => {
+    let sql = 'SELECT casecode, test_result, res_address FROM cases';
+    database.query(sql, (err, result) => {
+        if (err) {
+            res.end(JSON.stringify([]));
+            return;
+        }
+        res.end(JSON.stringify(result));
+    });
+});
 
 // Authentication Functions
 function checkAuthenticatedAdmin(req, res, next) {
@@ -169,7 +214,9 @@ function checkAuthenticatedAdmin(req, res, next) {
 function checkAuthenticatedMedic(req, res, next) {
     if (req.isAuthenticated()) {
         if (req.user.role == 1) {
-            server.use("/medic", express.static('./public/medic'));
+            server.use("/medic", express.static('./public/medic/main'));
+            server.use("/medic/resume", express.static('./public/medic/resume'));
+            server.use("/medic/search", express.static('./public/medic/search'));
             return next();
         } else {
             req.logOut();

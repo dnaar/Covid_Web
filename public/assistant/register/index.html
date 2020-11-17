@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="src/css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
     <title>Registro de casos</title>
 </head>
 
@@ -28,10 +29,10 @@
             </select><br><br>
             <label for="bdate">Fecha de nacimiento:</label><br><br>
             <input name="bdate" type="date"><br><br>
-            <label for="haddress">Dirección de residencia:</label><br>
-            <input name="haddress" type="text"><br><br>
-            <label for="waddress">Direccion de trabajo:</label><br>
-            <input name="waddress" type="text"><br><br>
+            <label for="haddress">Ubicación del residencia:</label><br>
+            <input name="haddress" type="text" onfocus="initializeMap(0)"><br><br>
+            <label for="waddress">Ubicación del trabajo:</label><br>
+            <input name="waddress" type="text" onfocus="initializeMap(1)"><br><br>
             <label for="tres">Resultado de examen:</label><br>
             <select name="tres">
                 <option></option>
@@ -42,12 +43,16 @@
             <input name="tdate" type="date"><br><br>
             <button type="button" onclick="validateForm();" style="margin-top:10px">Confirmar</button>
         </form>
-        <form action="/logout?_method=DELETE" method="POST">
-            <input type="submit" value="Salir" style="margin-top:10px">
-        </form>
     </div>
+
+    <div id="mapcontainer">
+        <div id="map"></div>
+        <button type="button" onclick="closeMap()">Aceptar</button>
+    </div>
+
 </body>
 
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
 <script src="src/js/script.js"></script>
 
 </html>

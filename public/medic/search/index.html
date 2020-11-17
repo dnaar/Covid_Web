@@ -6,32 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="src/css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <title>Gestión de casos</title>
+    <title>Buscarn casos</title>
 </head>
 
 <body>
-    <h1>BIENVENIDO A LA GESTIÓN DE CASOS</h1>
+    <h1>BIENVENIDO A LA BÚSQUEDA DE CASOS</h1>
     <div id="buscar">
         <label for="search_type">Buscar por: </label><br>
         <input id="id" type="number" placeholder="ID de Caso."><input type="checkbox" checked="checked" id="id_search" onchange="idchecked()"><br>
-        <input id="name" type="text" disabled="true" placeholder="Nombre del paciente."><input type="checkbox" id="name_search" onchange="namechecked()"><br>
         <input id="cc" type="number" disabled="true" placeholder="Cédula del paciente."><input type="checkbox" id="cc_search" onchange="ccchecked()"><br><br>
         <button type="button" onclick="search_cases()">Buscar casos</button>
     </div>
     <div id="patientRes"></div>
     <div id="patState"></div>
-    <div id="stateUpdate">
-        <label for="updateState">Actualizar estado:</label><br>
-        <select id="updateState">
-            <option value=0>En Tratamiento Casa.</option>
-            <option value=1>En Tratamiento hospital.</option>
-            <option value=2>En UCI.</option>
-            <option value=3>Curado.</option>
-            <option value=4>Muerte.</option>
-        </select><br>
-        <input type="date" id="up_date">
-        <button type="button" onclick="updateState()" id="update_btn">Actualizar estado</button>
-    </div>
 </body>
 
 <script src="src/js/script.js"></script>

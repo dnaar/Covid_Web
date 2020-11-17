@@ -1,21 +1,14 @@
 const id_search = document.getElementById("id_search");
-const name_search = document.getElementById("name_search");
 const cc_search = document.getElementById("cc_search");
 const id = document.getElementById("id");
-const name = document.getElementById("name");
 const cc = document.getElementById("cc");
-var search_id, search_name, search_cc = "";
+var search_id, search_cc = "";
 var patRes = [];
 var act_case;
 
 function idchecked() {
     id.disabled = !id_search.checked;
     if (!id_search.checked) { id.value = ""; }
-}
-
-function namechecked() {
-    name.disabled = !name_search.checked;
-    if (!name_search.checked) { name.value = ""; }
 }
 
 function ccchecked() {
@@ -26,7 +19,6 @@ function ccchecked() {
 async function search_cases() {
     var scheck1 = true;
     var scheck3 = true;
-    var scheck2 = true;
     if (id_search.checked) {
         if (id.value.length == 0) {
             id.style.boxShadow = "0px 0px 10px red";
@@ -34,15 +26,6 @@ async function search_cases() {
         } else {
             scheck1 = true;
             id.style.boxShadow = "";
-        }
-    }
-    if (name_search.checked) {
-        if (name.value.length == 0) {
-            name.style.boxShadow = "0px 0px 10px red";
-            scheck2 = false;
-        } else {
-            scheck2 = true;
-            name.style.boxShadow = "";
         }
     }
     if (cc_search.checked) {
@@ -54,16 +37,12 @@ async function search_cases() {
             cc.style.boxShadow = "";
         }
     }
-    if (!(id_search.checked || name_search.checked || cc_search.checked)) { return; };
-    if (!(scheck1 && scheck2 && scheck3)) { console.log(scheck1, scheck2, scheck3); return; }
+    if (!(id_search.checked || cc_search.checked)) { return; };
+    if (!(scheck1 && scheck3)) { console.log(scheck1, scheck3); return; }
     search_id = id.value;
-    search_name = name.value;
     search_cc = cc.value;
     if (id.value == "") {
         search_id = 0;
-    }
-    if (name.value == "") {
-        search_name = 0;
     }
     if (cc.value == "") {
         search_cc = 0;
@@ -71,8 +50,7 @@ async function search_cases() {
     patRes = [];
     document.getElementById("patientRes").innerHTML = '';
     document.getElementById("patState").innerHTML = '';
-    document.getElementById("stateUpdate").style.display = "none";
-    const response = await fetch(`/assistant/manage/filter/${search_id}/${search_name}/${search_cc}`);
+    const response = await fetch(`/medic/search/filter/${search_id}/${search_cc}`);
     const data = await response.json();
     data.forEach((patient, index) => {
         var con_i = document.createElement("div");
@@ -90,7 +68,7 @@ async function search_cases() {
 
 async function pat_indexing(index) {
     act_case = patRes[index];
-    const response = await fetch(`/assistant/manage/states/${patRes[index].casecode}`);
+    const response = await fetch(`/medic/search/states/${patRes[index].casecode}`);
     const data = await response.json();
     document.getElementById("patState").innerHTML = "";
     data.forEach((patient) => {
@@ -100,25 +78,4 @@ async function pat_indexing(index) {
         con_i.appendChild(res_i);
         document.getElementById("patState").appendChild(con_i);
     });
-    document.getElementById("stateUpdate").style.display = "block";
-    if (data[data.length - 1].idstate == 4) {
-        document.getElementById("update_btn").disabled = true;
-    } else {
-        document.getElementById("update_btn").disabled = false;
-    }
-}
-async function updateState() {
-    const nDate = document.getElementById("up_date").value;
-    // const tDate = new Date();
-    // const nDate = tDate.getFullYear() + "-" + (tDate.getMonth() + 1) + "-" + tDate.getDate();
-    if (nDate == "") {
-        alert("Por favor ingresar la fecha de actualización.");
-    } else {
-        console.log(`/assistant/manage/u_states/${act_case.casecode}/${document.getElementById("updateState").value}/${nDate}`);
-        await fetch(`/assistant/manage/u_states/${act_case.casecode}/${document.getElementById("updateState").value}/${nDate}`);
-        console.log("Caso añadido");
-        if (document.getElementById("updateState").value == 4) {
-            document.getElementById("update_btn").disabled = true;
-        }
-    }
 }
