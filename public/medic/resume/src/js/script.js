@@ -52,4 +52,8 @@ async function loadCases() {
     });
 }
 
+function clsession() {
+    document.forms["log_out"].submit();
+}
+
 initializeMap();

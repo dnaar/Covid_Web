@@ -79,3 +79,7 @@ async function pat_indexing(index) {
         document.getElementById("patState").appendChild(con_i);
     });
 }
+
+function clsession() {
+    document.forms["log_out"].submit();
+}
