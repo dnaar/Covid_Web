@@ -4,6 +4,10 @@ var aux_address;
 var haddress = document.forms["case_form"]["haddress"];
 var waddress = document.forms["case_form"]["waddress"];
 
+const tdate = new Date();
+const nDate = tdate.getFullYear() + "-" + (1 + tdate.getMonth()) + "-" + tdate.getDate();
+document.forms["case_form"]["logdate"].value = nDate;
+
 function validateForm() {
     var name = document.forms["case_form"]["name"];
     var lname = document.forms["case_form"]["lname"];
@@ -77,6 +81,7 @@ function validateForm() {
         validate8 = true;
     }
     if (validate0 && validate1 && validate2 && validate3 && validate4 && validate5 && validate6 && validate7 && validate8) {
+        document.forms["case_form"]["logdate"].disabled = false;
         document.forms["case_form"].submit();
     }
 }

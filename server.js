@@ -79,7 +79,7 @@ server.post('/admin/addnewuser', checkAuthenticatedAdmin, (req, res) => {
 });
 server.post('/assistant/register/newcase', checkAuthenticatedAssistant, (req, res) => {
     let sql = 'INSERT INTO cases SET ?';
-    let newCase = { name: req.body.name, lname: req.body.lname, idpatient: parseInt(req.body.id), gender: parseInt(req.body.gender), birthdate: req.body.bdate, res_address: req.body.haddress, job_address: req.body.waddress, test_result: parseInt(req.body.tres), test_date: req.body.tdate };
+    let newCase = { name: req.body.name, lname: req.body.lname, idpatient: parseInt(req.body.id), gender: parseInt(req.body.gender), birthdate: req.body.bdate, res_address: req.body.haddress, job_address: req.body.waddress, test_result: parseInt(req.body.tres), test_date: req.body.tdate, logdate: req.body.logdate };
     database.query(sql, newCase, (err, result) => {
         if (err) {
             return;
@@ -210,7 +210,29 @@ server.get('/user/credentials', checkAuthentication, (req, res) => {
             return;
         }
         res.end(JSON.stringify(result));
-    })
+    });
+});
+server.get('/api/getCData/:type/:date', (req, res) => {
+    var sql;
+    if (req.params.type == '0') {
+        sql = `select count(idstate) M from case_state where idstate=4 and state_date='${req.params.date}'`
+    }
+    if (req.params.type == '1') {
+        sql = `SELECT count(casecode) C FROM cases where test_result = 1 and logdate='${req.params.date}'`;
+    }
+    if (req.params.type == '2') {
+        sql = 'select cs.idstate, count(idstate) C from case_state cs, (SELECT idcase, max(state_date) as max_date FROM case_state group by idcase) md, cases cc where cs.idcase = md.idcase and cs.state_date=md.max_date and cs.idcase = cc.casecode group by idstate';
+    }
+    if (req.params.type == '3') {
+        sql = 'SELECT test_result, count(test_result) C FROM cases group by test_result';
+    }
+    database.query(sql, (err, result) => {
+        if (err) {
+            res.end(JSON.stringify([]));
+            return;
+        }
+        res.end(JSON.stringify(result));
+    });
 });
 
 
