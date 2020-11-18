@@ -109,16 +109,22 @@ async function pat_indexing(index) {
 }
 async function updateState() {
     const nDate = document.getElementById("up_date").value;
-    if (nDate == "") {
-        alert("Por favor ingresar la fecha de actualización.");
+    if (act_case.test_result == 0) {
+        alert("El caso seleccionado tiene resultado negativo en su prueba de Covid-19");
     } else {
-        console.log(`/assistant/manage/u_states/${act_case.casecode}/${document.getElementById("updateState").value}/${nDate}`);
-        await fetch(`/assistant/manage/u_states/${act_case.casecode}/${document.getElementById("updateState").value}/${nDate}`);
-        console.log("Caso añadido");
-        if (document.getElementById("updateState").value == 4) {
-            document.getElementById("update_btn").disabled = true;
+        if (nDate == "") {
+            alert("Por favor ingresar la fecha de actualización.");
+        } else {
+            console.log(`/assistant/manage/u_states/${act_case.casecode}/${document.getElementById("updateState").value}/${nDate}`);
+            await fetch(`/assistant/manage/u_states/${act_case.casecode}/${document.getElementById("updateState").value}/${nDate}`);
+            if (document.getElementById("updateState").value == 4) {
+                document.getElementById("update_btn").disabled = true;
+            }
         }
+
     }
+
+
 }
 
 function clsession() {

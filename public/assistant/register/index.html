@@ -54,11 +54,11 @@ Released   : 20120624
                 <input name="id" type="number"><br><br>
                 <label for="gender">Sexo:</label><br>
                 <select name="gender">
-				<option></option>
-				<option value=0>Mujer</option>
-				<option value=1>Hombre</option>
-				<option value=2>Otro</option>
-			</select><br><br>
+                    <option></option>
+                    <option value=0>Mujer</option>
+                    <option value=1>Hombre</option>
+                    <option value=2>Otro</option>
+			    </select><br><br>
                 <label for="bdate">Fecha de nacimiento:</label><br><br>
                 <input name="bdate" type="date"><br><br>
                 <label for="haddress">Ubicación del residencia:</label><br>
@@ -67,12 +67,14 @@ Released   : 20120624
                 <input name="waddress" type="text" onfocus="initializeMap(1)"><br><br>
                 <label for="tres">Resultado de examen:</label><br>
                 <select name="tres">
-				<option></option>
-				<option value=0>Negativo</option>
-				<option value=1>Positivo</option>
-			</select><br><br>
+                    <option></option>
+                    <option value=0>Negativo</option>
+                    <option value=1>Positivo</option>
+			    </select><br><br>
                 <label for="tdate">Fecha de examen:</label><br><br>
                 <input name="tdate" type="date"><br><br>
+                <label for="logdate">Fecha de registro:</label><br>
+                <input name="logdate" type="date" disabled=true><br><br>
                 <button type="button" onclick="validateForm();" style="margin-top:10px">Confirmar</button>
             </form>
         </div>
