@@ -48,35 +48,56 @@ async function search_cases() {
         search_cc = 0;
     }
     patRes = [];
-    document.getElementById("patientRes").innerHTML = '';
+    document.getElementById("patientRes").innerHTML = '<tr>    <th>ID. Caso</th>    <th>Nombre</th>    <th>Apellido</th>    <th>Cédula</th>    <th>Sexo</th>    <th>Fecha de Nacimiento</th>    <th>Resultado</th>    <th>Fecha de exámen</th></tr>';
     document.getElementById("patState").innerHTML = '';
     const response = await fetch(`/medic/search/filter/${search_id}/${search_cc}`);
     const data = await response.json();
     data.forEach((patient, index) => {
-        var con_i = document.createElement("div");
-        con_i.style.cursor = "pointer";
-        con_i.value = index;
-        con_i.onclick = () => { pat_indexing(index) };
-        var res_i = document.createElement("table");
-        res_i.innerHTML = `<tr> <td>${patient.casecode}</td> <td>${patient.name}</td> <td>${patient.lname}</td> <td>${patient.idpatient}</td> <td>${patient.gender}</td> <td>${patient.birthdate}</td> <td>${patient.test_result}</td> <td>${patient.test_date}</td> </tr>`;
-        con_i.appendChild(res_i);
-
-        document.getElementById("patientRes").appendChild(con_i);
+        var res_i = document.createElement("tr");
+        res_i.style.cursor = "pointer";
+        res_i.value = index;
+        res_i.onclick = () => { pat_indexing(index) };
+        res_i.innerHTML = `<td>${patient.casecode}</td> <td>${patient.name}</td> <td>${patient.lname}</td> <td>${patient.idpatient}</td> <td>${getGender(patient.gender)}</td> <td>${formatDate(patient.birthdate)}</td> <td>${getResult(patient.test_result)}</td> <td>${formatDate(patient.test_date)}</td>`;
+        document.getElementById("patientRes").appendChild(res_i);
         patRes.push(patient);
     });
 };
+
+function getResult(result) {
+    if (result == 0) {
+        return "Negativo";
+    } else {
+        return "Positivo";
+    }
+}
+
+function getGender(gender) {
+    if (gender == 0) {
+        return "Mujer";
+    }
+    if (gender == 1) {
+        return "Hombre";
+    }
+    if (gender == 2) {
+        return "Otro";
+    }
+}
+
+function formatDate(date) {
+    date = new Date(date);
+    date = date.getFullYear() + "/" + date.getMonth() + "/" + date.getDate();
+    return date;
+}
 
 async function pat_indexing(index) {
     act_case = patRes[index];
     const response = await fetch(`/medic/search/states/${patRes[index].casecode}`);
     const data = await response.json();
-    document.getElementById("patState").innerHTML = "";
+    document.getElementById("patState").innerHTML = "<tr><th>Estado</th><th>Fecha de Actualización</th></tr>";
     data.forEach((patient) => {
-        var con_i = document.createElement("div");
-        var res_i = document.createElement("table");
-        res_i.innerHTML = `<tr> <td>${patient.state}</td> <td>${patient.state_date}</td> </tr>`;
-        con_i.appendChild(res_i);
-        document.getElementById("patState").appendChild(con_i);
+        var res_i = document.createElement("tr");
+        res_i.innerHTML = `<tr> <td>${patient.state}</td> <td>${formatDate(patient.state_date)}</td> </tr>`;
+        document.getElementById("patState").appendChild(res_i);
     });
 }
 

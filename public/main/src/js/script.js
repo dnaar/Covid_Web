@@ -37,7 +37,6 @@ async function showChart() {
         }, {
             type: "column",
             showInLegend: true,
-            axisYType: "secondary",
             name: "Casos de Muertes",
             xValueFormatString: "####",
             dataPoints: M
