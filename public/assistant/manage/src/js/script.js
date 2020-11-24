@@ -37,6 +37,8 @@ async function search_cases() {
             id.style.boxShadow = "";
             prueba.style.display= "block"
         }
+    }else{
+        id.style.boxShadow = "";
     }
     if (name_search.checked) {
         if (name.value.length == 0) {
@@ -47,6 +49,8 @@ async function search_cases() {
             name.style.boxShadow = "";
             prueba.style.display= "block"
         }
+    }else{
+        name.style.boxShadow = "";
     }
     if (cc_search.checked) {
         if (cc.value.length == 0) {
@@ -57,6 +61,8 @@ async function search_cases() {
             cc.style.boxShadow = "";
             prueba.style.display= "block"
         }
+    }else{
+        cc.style.boxShadow = "";
     }
     if (!(id_search.checked || name_search.checked || cc_search.checked)) { return; };
     if (!(scheck1 && scheck2 && scheck3)) { console.log(scheck1, scheck2, scheck3); return; }
@@ -131,9 +137,11 @@ async function pat_indexing(index) {
         });
         document.getElementById("stateUpdate").style.display = "inline-block";
         if (data[data.length - 1].idstate == 4) {
-            document.getElementById("update_btn").disabled = true;
+            document.getElementById("update_btn").disabled = true; 
+            document.getElementById("update_btn").style.display="none";      
         } else {
             document.getElementById("update_btn").disabled = false;
+            document.getElementById("update_btn").style.display="inline";     
         }
     }
 
@@ -145,8 +153,9 @@ async function updateState() {
     } else {
         console.log(`/assistant/manage/u_states/${act_case.casecode}/${document.getElementById("updateState").value}/${nDate}`);
         await fetch(`/assistant/manage/u_states/${act_case.casecode}/${document.getElementById("updateState").value}/${nDate}`);
+        alert('Se ha actualizado el estado del caso seleccionado')
         if (document.getElementById("updateState").value == 4) {
-            document.getElementById("update_btn").disabled = true;
+            document.getElementById("update_btn").disabled = true;            
         }
     }
 

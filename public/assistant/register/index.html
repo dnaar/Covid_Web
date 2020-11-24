@@ -62,10 +62,12 @@ Released   : 20120624
                     </select><br>
                     <label for="bdate">Fecha de nacimiento:</label><br>
                     <input name="bdate" type="date"><br>
+                    <br>
                     <label for="haddress">Ubicación del residencia:</label><br>
                     <input name="haddress" type="text" onfocus="initializeMap(0)"><br>
                     <label for="waddress">Ubicación del trabajo:</label><br>
                     <input name="waddress" type="text" onfocus="initializeMap(1)"><br>
+                    <br>
                     <label for="tres">Resultado de examen:</label><br>
                     <select name="tres">
                         <option></option>
@@ -74,16 +76,18 @@ Released   : 20120624
                     </select><br>
                     <label for="tdate">Fecha de examen:</label><br>
                     <input name="tdate" type="date"><br>
+                    <br>
                     <label for="logdate">Fecha de registro:</label><br>
                     <input name="logdate" type="date" disabled=true><br>
                     <br>
                     <button id="btn" type="button" onclick="validateForm();" style="margin-top:10px">Confirmar</button>
                 </form>
-        </div>
+            </div>
 
             <div id="mapcontainer">
-                <button type="button" onclick="closeMap()">Aceptar</button>
-                <div id="map"></div>
+                <div id="map" style="padding: 45px;"></div>
+                <br>
+                <button id="btn" type="button" onclick="closeMap()">Aceptar</button>
             </div>
         </div>
         <div id="page-bottom">
