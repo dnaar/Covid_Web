@@ -164,6 +164,20 @@ ul h4 {
 	border-radius: 2px;
 }
 
+#content1{
+    display: grid;
+    grid-template-columns: 32% 68%;
+	/* max-width: 960px; */
+	margin: 0 auto;
+}
+#content1 div{
+
+    padding: 15px;
+}
+#content1 div:nth-child(even){
+ 
+    padding: 15px;
+}
 #content {
 	width: 665px;
 	float: left;

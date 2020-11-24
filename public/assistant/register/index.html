@@ -42,47 +42,49 @@ Released   : 20120624
         <form name="log_out" action="/logout?_method=DELETE" method="POST" style="display:none">
             <input type="submit" value="Salir" style="margin-top:10px">
         </form>
-        <div id="form_div">
-            <form name="case_form" action="/assistant/register/newcase" method="post">
-                <h1>Registrar Caso:</h1>
-                <br>
-                <label for="name">Nombre:</label><br>
-                <input name="name" type="text"><br>
-                <label for="lname">Apellido:</label><br>
-                <input name="lname" type="text"><br>
-                <label for="id">Cédula:</label><br>
-                <input name="id" type="number"><br>
-                <label for="gender">Sexo:</label><br>
-                <select name="gender">
-                    <option></option>
-                    <option value=0>Mujer</option>
-                    <option value=1>Hombre</option>
-                    <option value=2>Otro</option>
-			    </select><br>
-                <label for="bdate">Fecha de nacimiento:</label><br>
-                <input name="bdate" type="date"><br>
-                <label for="haddress">Ubicación del residencia:</label><br>
-                <input name="haddress" type="text" onfocus="initializeMap(0)"><br>
-                <label for="waddress">Ubicación del trabajo:</label><br>
-                <input name="waddress" type="text" onfocus="initializeMap(1)"><br>
-                <label for="tres">Resultado de examen:</label><br>
-                <select name="tres">
-                    <option></option>
-                    <option value=0>Negativo</option>
-                    <option value=1>Positivo</option>
-			    </select><br>
-                <label for="tdate">Fecha de examen:</label><br>
-                <input name="tdate" type="date"><br>
-                <label for="logdate">Fecha de registro:</label><br>
-                <input name="logdate" type="date" disabled=true><br>
-                <br>
-                <button id="btn" type="button" onclick="validateForm();" style="margin-top:10px">Confirmar</button>
-            </form>
+        <div id="content1">
+            <div id="form_div">
+                <form name="case_form" action="/assistant/register/newcase" method="post">
+                    <h1>Registrar Caso:</h1>
+                    <br>
+                    <label for="name">Nombre:</label><br>
+                    <input name="name" type="text"><br>
+                    <label for="lname">Apellido:</label><br>
+                    <input name="lname" type="text"><br>
+                    <label for="id">Cédula:</label><br>
+                    <input name="id" type="number"><br>
+                    <label for="gender">Sexo:</label><br>
+                    <select name="gender">
+                        <option></option>
+                        <option value=0>Mujer</option>
+                        <option value=1>Hombre</option>
+                        <option value=2>Otro</option>
+                    </select><br>
+                    <label for="bdate">Fecha de nacimiento:</label><br>
+                    <input name="bdate" type="date"><br>
+                    <label for="haddress">Ubicación del residencia:</label><br>
+                    <input name="haddress" type="text" onfocus="initializeMap(0)"><br>
+                    <label for="waddress">Ubicación del trabajo:</label><br>
+                    <input name="waddress" type="text" onfocus="initializeMap(1)"><br>
+                    <label for="tres">Resultado de examen:</label><br>
+                    <select name="tres">
+                        <option></option>
+                        <option value=0>Negativo</option>
+                        <option value=1>Positivo</option>
+                    </select><br>
+                    <label for="tdate">Fecha de examen:</label><br>
+                    <input name="tdate" type="date"><br>
+                    <label for="logdate">Fecha de registro:</label><br>
+                    <input name="logdate" type="date" disabled=true><br>
+                    <br>
+                    <button id="btn" type="button" onclick="validateForm();" style="margin-top:10px">Confirmar</button>
+                </form>
         </div>
 
-        <div id="mapcontainer">
-            <button type="button" onclick="closeMap()">Aceptar</button>
-            <div id="map"></div>
+            <div id="mapcontainer">
+                <button type="button" onclick="closeMap()">Aceptar</button>
+                <div id="map"></div>
+            </div>
         </div>
         <div id="page-bottom">
             <div id="page-bottom-content">
