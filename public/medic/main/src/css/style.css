@@ -17,7 +17,9 @@ Released   : 20120624
 #user_form {
     width: 20%;
 }
-
+.image-full{
+    width: 100%;
+}
 .displayError {
     display: none;
 }
@@ -100,6 +102,7 @@ img.pic {
 
 p {
     margin-bottom: 1.5em;
+    font-size: 1.4em;
 }
 
 ul {
@@ -122,6 +125,20 @@ ul h4 {
     color: #FFFFFF;
     font-size: 0.8em;
     border-radius: 2px;
+}
+#content1{
+    display: grid;
+    grid-template-columns: 55% 45%;
+	/* max-width: 960px; */
+	margin: 0 auto;
+}
+#content1 div{
+
+    padding: 30px;
+}
+#content1 div:nth-child(even){
+ 
+    padding: 30px;
 }
 
 #content {
@@ -194,7 +211,7 @@ ul h4 {
 
 #slogan h2 {
     color: #BEBEBE;
-    font-size: 1.25em;
+    font-size: 1.8em;
     text-shadow: 0 1px 1px #3E3E3E;
 }
 
@@ -218,8 +235,7 @@ ul h4 {
 }
 
 #menu ul li {
-    padding: 5px 30px 5px 30px;
-    margin-right: 10px;
+    padding: 5px 60px 5px 60px;
     display: inline-block;
 }
 
@@ -228,7 +244,7 @@ ul h4 {
     text-decoration: none;
     color: #FFFFFF;
     letter-spacing: -1px;
-    font-size: 1.25em;
+    font-size: 1.8em;
 }
 
 #menu ul li span b {
@@ -314,7 +330,7 @@ ul h4 {
 #page {
     padding: 45px 45px 15px 45px;
     position: relative;
-    width: 890px;
+    width: 100%;
     margin: 0;
 }
 

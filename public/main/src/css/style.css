@@ -62,7 +62,9 @@ h4 {
 }
 
 h2 {
-    font-size: 2.25em;
+
+    font-size: 2.45em;
+    margin-right: 40px;
 }
 
 h2,
@@ -96,6 +98,7 @@ img.pic {
 
 p {
     margin-bottom: 1.5em;
+    font-size: 1.4em;
 }
 
 ul {
@@ -191,7 +194,7 @@ ul h4 {
 
 #slogan h2 {
     color: #BEBEBE;
-    font-size: 1.25em;
+    font-size: 1.8em;
     text-shadow: 0 1px 1px #3E3E3E;
 }
 
@@ -215,7 +218,7 @@ ul h4 {
 }
 
 #menu ul li {
-    padding: 5px 30px 5px 30px;
+    padding: 5px 60px 5px 60px;
     margin-right: 10px;
     display: inline-block;
 }
@@ -225,7 +228,7 @@ ul h4 {
     text-decoration: none;
     color: #FFFFFF;
     letter-spacing: -1px;
-    font-size: 1.25em;
+    font-size: 1.8em;
 }
 
 #menu ul li span b {

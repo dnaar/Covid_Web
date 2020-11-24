@@ -19,16 +19,22 @@ Released   : 20120624
     margin-left: auto;
     margin-right: auto;
     position: relative;
-    padding: 20px;
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.6);
+    padding: 30px;
+    padding-bottom: 50px;
+    border-radius: 14px;
+    box-shadow: 0px 0px 15px #209D9D;
+    margin-bottom: 50px;
+    margin-top: 40px;
 }
 
 #log_btn {
     background-color: #209D9D;
+    margin-left: 65px;
     color: #FFFFFF;
     font-size: 20px;
     padding: 5px;
     border: none;
+    outline:none;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
     border: 1px solid #209D9D;
     transition-duration: 0.4s;
@@ -38,9 +44,9 @@ Released   : 20120624
 
 #log_btn:hover {
     background-color: white;
-    color: black;
+    color: #209D9D;
     border: 1px solid #209D9D;
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.6);
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
 }
 
 .textInput {
@@ -213,7 +219,7 @@ ul h4 {
 
 #slogan h2 {
     color: #BEBEBE;
-    font-size: 1.25em;
+    font-size: 1.8em;
     text-shadow: 0 1px 1px #3E3E3E;
 }
 
@@ -237,8 +243,7 @@ ul h4 {
 }
 
 #menu ul li {
-    padding: 5px 30px 5px 30px;
-    margin-right: 10px;
+    padding: 5px 60px 5px 60px;
     display: inline-block;
 }
 
@@ -247,7 +252,7 @@ ul h4 {
     text-decoration: none;
     color: #FFFFFF;
     letter-spacing: -1px;
-    font-size: 1.25em;
+    font-size: 1.8em;
 }
 
 #menu ul li span b {
