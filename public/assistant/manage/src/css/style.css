@@ -14,6 +14,50 @@ Released   : 20120624
     padding: 0;
 }
 
+#prueba{
+    text-align: center;
+}
+#btn {
+    background-color: #209D9D;
+    color: #FFFFFF;
+    font-size: 16px;
+    padding: 5px;
+    border: none;
+    outline:none;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    border: 1px solid #209D9D;
+    transition-duration: 0.4s;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#btn:hover {
+    background-color: white;
+    color: #209D9D;
+    border: 1px solid #209D9D;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+}
+#update_btn {
+    background-color: #209D9D;
+    color: #FFFFFF;
+    font-size: 16px;
+    margin-left: 40px;
+    padding: 5px;
+    border: none;
+    outline:none;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    border: 1px solid #209D9D;
+    transition-duration: 0.4s;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#update_btn:hover {
+    background-color: white;
+    color: #209D9D;
+    border: 1px solid #209D9D;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+}
 #stateUpdate {
     display: none;
 }
@@ -42,6 +86,7 @@ td {
     margin-top: 30px;
     padding: 10px;
     width: 95%;
+    border-radius: 6px;
     display: none;
     height: auto;
     position: relative;
@@ -54,13 +99,16 @@ td {
     margin-top: 25px;
     padding: 10px;
     width: 95%;
+    height: 100%;
+    border-radius: 6px;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.6);
 }
 
 #SUC {
-    position: absolute;
+    /* position: absolute; */
     display: inline-block;
     margin-left: 100px;
+    /* height: 130px; */
 }
 
 #patState {
@@ -74,10 +122,11 @@ td {
     width: 30%;
     margin-left: auto;
     margin-right: auto;
+    border-radius: 12px;
     position: relative;
     margin-left: 0;
-    padding: 20px;
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.6);
+    padding: 30px;
+    box-shadow: 0px 0px 15px #209D9D;
 }
 
 .displayError {
