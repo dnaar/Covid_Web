@@ -26,7 +26,7 @@ Released   : 20120624
                 <h1><a href="#">Clínica del Norte: COVID-19</a></h1>
             </div>
             <div id="slogan">
-                <h2>Médico</h2>
+                <h2>Búsqueda</h2>
             </div>
         </div>
         <div id="menu">
@@ -44,7 +44,7 @@ Released   : 20120624
                     <label for="search_type">Buscar por: </label><br>
                     <input id="id" type="number" placeholder="ID de Caso."><input type="checkbox" checked="checked" id="id_search" onchange="idchecked()"><br>
                     <input id="cc" type="number" disabled="true" placeholder="Cédula del paciente."><input type="checkbox" id="cc_search" onchange="ccchecked()"><br><br>
-                    <button type="button" onclick="search_cases()">Buscar casos</button>
+                    <button id="btn" type="button" onclick="search_cases()">Buscar casos</button>
                 </div>
                 <table id="patientRes" style="text-align:center"></table>
                 <br>

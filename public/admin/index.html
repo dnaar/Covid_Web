@@ -33,13 +33,13 @@ Released   : 20120624
         </div>
         <div id="menu">
             <ul>
-                <li class="last" style="padding-right: 110px;"><a href="/">Menú</a></li>
+                <li class="last" style="margin-right: 55%;" ><a href="/">Menú</a></li>
                 <li onclick="clsession();"><a href="#">Salir</a></li>
             </ul>
             <br class="clearfix" />
         </div>
         <form name="log_out" action="/logout?_method=DELETE" method="POST" style="display:none">
-            <input type="submit" value="Salir" style="margin-top:10px">
+            <input type="submit" value="Salir" >
         </form>
         <div id="page">
             <h1>Ingresar nuevos usuarios al sistema:</h1><br>
@@ -61,6 +61,7 @@ Released   : 20120624
                     <input name="usr_username" type="text"><span id='displayError3' class='displayError'>   Mínimo 6 caracteres.</span><br>
                     <label for="usr_password">Contraseña:</label><br>
                     <input name="usr_password" type="password"><span id='displayError4' class='displayError'>   Mínimo 8 caracteres.</span><br>
+                    <br>
                     <button id="btn" type="button" onclick="validateForm();" style="margin-top:10px">Confirmar</button>
                 </form>
             </div>
