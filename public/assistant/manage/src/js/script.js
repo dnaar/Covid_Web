@@ -27,31 +27,35 @@ async function search_cases() {
     var scheck1 = true;
     var scheck3 = true;
     var scheck2 = true;
+    let prueba = document.getElementById('prueba');
     if (id_search.checked) {
         if (id.value.length == 0) {
-            id.style.boxShadow = "0px 0px 10px red";
+            id.style.boxShadow = "0px 0px 10px #209D9D";
             scheck1 = false;
         } else {
             scheck1 = true;
             id.style.boxShadow = "";
+            prueba.style.display= "block"
         }
     }
     if (name_search.checked) {
         if (name.value.length == 0) {
-            name.style.boxShadow = "0px 0px 10px red";
+            name.style.boxShadow = "0px 0px 10px #209D9D";
             scheck2 = false;
         } else {
             scheck2 = true;
             name.style.boxShadow = "";
+            prueba.style.display= "block"
         }
     }
     if (cc_search.checked) {
         if (cc.value.length == 0) {
-            cc.style.boxShadow = "0px 0px 10px red";
+            cc.style.boxShadow = "0px 0px 10px #209D9D";
             scheck3 = false;
         } else {
             scheck3 = true;
             cc.style.boxShadow = "";
+            prueba.style.display= "block"
         }
     }
     if (!(id_search.checked || name_search.checked || cc_search.checked)) { return; };

@@ -18,63 +18,63 @@ function validateForm() {
     var tdate = document.forms["case_form"]["tdate"];
     var validate0, validate1, validate2, validate3, validate4, validate5, validate6, validate7, validate8 = false;
     if (name.value == "" || /\d/.test(name.value)) {
-        name.style.boxShadow = "0px 0px 10px red";
+        name.style.boxShadow = "0px 0px 10px #209D9D";
         validate0 = false;
     } else {
         name.style.boxShadow = "";
         validate0 = true;
     }
     if (lname.value == "" || /\d/.test(lname.value)) {
-        lname.style.boxShadow = "0px 0px 10px red";
+        lname.style.boxShadow = "0px 0px 10px #209D9D";
         validate1 = false;
     } else {
         lname.style.boxShadow = "";
         validate1 = true;
     }
     if (id.value == "") {
-        id.style.boxShadow = "0px 0px 10px red";
+        id.style.boxShadow = "0px 0px 10px #209D9D";
         validate2 = false;
     } else {
         id.style.boxShadow = "";
         validate2 = true;
     }
     if (gender.value == "") {
-        gender.style.boxShadow = "0px 0px 10px red";
+        gender.style.boxShadow = "0px 0px 10px #209D9D";
         validate3 = false;
     } else {
         gender.style.boxShadow = "";
         validate3 = true;
     }
     if (bdate.value == "") {
-        bdate.style.boxShadow = "0px 0px 10px red";
+        bdate.style.boxShadow = "0px 0px 10px #209D9D";
         validate4 = false;
     } else {
         bdate.style.boxShadow = "";
         validate4 = true;
     }
     if (haddress.value == "") {
-        haddress.style.boxShadow = "0px 0px 10px red";
+        haddress.style.boxShadow = "0px 0px 10px #209D9D";
         validate5 = false;
     } else {
         haddress.style.boxShadow = "";
         validate5 = true;
     }
     if (waddress.value == "") {
-        waddress.style.boxShadow = "0px 0px 10px red";
+        waddress.style.boxShadow = "0px 0px 10px #209D9D";
         validate6 = false;
     } else {
         waddress.style.boxShadow = "";
         validate6 = true;
     }
     if (tres.value == "") {
-        tres.style.boxShadow = "0px 0px 10px red";
+        tres.style.boxShadow = "0px 0px 10px #209D9D";
         validate7 = false;
     } else {
         tres.style.boxShadow = "";
         validate7 = true;
     }
     if (tdate.value == "") {
-        tdate.style.boxShadow = "0px 0px 10px red";
+        tdate.style.boxShadow = "0px 0px 10px #209D9D";
         validate8 = false;
     } else {
         tdate.style.boxShadow = "";
@@ -83,6 +83,7 @@ function validateForm() {
     if (validate0 && validate1 && validate2 && validate3 && validate4 && validate5 && validate6 && validate7 && validate8) {
         document.forms["case_form"]["logdate"].disabled = false;
         document.forms["case_form"].submit();
+        alert('Se ha registrado un nuevo caso')
     }
 }
 

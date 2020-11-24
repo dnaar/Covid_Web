@@ -17,6 +17,7 @@ Released   : 20120624
     <title>Clínica del Norte: COVID-19</title>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <link rel="stylesheet" type="text/css" href="src/css/style.css" />
+    <link rel="stylesheet" href="src/css/css/all.min.css" />
 </head>
 
 <body>
@@ -48,15 +49,16 @@ Released   : 20120624
                 <input style="font-size:16px" id="id" type="number" placeholder="ID de Caso."><input type="checkbox" checked="checked" id="id_search" onchange="idchecked()"><br>
                 <input style="font-size:16px" id="name" type="text" disabled="true" placeholder="Nombre del paciente."><input type="checkbox" id="name_search" onchange="namechecked()"><br>
                 <input style="font-size:16px" id="cc" type="number" disabled="true" placeholder="Cédula del paciente."><input type="checkbox" id="cc_search" onchange="ccchecked()"><br><br>
-                <button type="button" onclick="search_cases()">Buscar casos</button>
+                <button id="btn" type="button" onclick="search_cases()">Buscar casos</button>
             </div>
             <div id="patList">
                 <table id="patientRes" style="text-align:center"></table>
+                <i id="prueba" style="display: none" class="fas fa-angle-double-down"></i>
             </div>
             <div id="stateUpdate">
                 <table id="patState"></table>
                 <div id="SUC">
-                    <label for="updateState">Actualizar estado:</label><br>
+                    <label for="updateState">Actualización de estado:</label><br>
                     <select id="updateState">
                         <option value=0>En Tratamiento Casa.</option>
                         <option value=1>En Tratamiento hospital.</option>
