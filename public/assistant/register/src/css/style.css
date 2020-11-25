@@ -20,8 +20,9 @@ Released   : 20120624
 }
 
 #mapcontainer {
+	margin-top: 200px;
     width: 480px;
-    height: 360px;
+	height: 360px;
     display: none;
 }
 #btn {
@@ -166,17 +167,16 @@ ul h4 {
 
 #content1{
     display: grid;
-    grid-template-columns: 32% 68%;
-	/* max-width: 960px; */
+    grid-template-columns: 36% 64%;
 	margin: 0 auto;
 }
 #content1 div{
 
-    padding: 15px;
+    padding: 1px;
 }
 #content1 div:nth-child(even){
  
-    padding: 15px;
+    padding: 1px;
 }
 #content {
 	width: 665px;

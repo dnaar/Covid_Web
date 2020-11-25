@@ -18,6 +18,7 @@ Released   : 20120624
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
     <link rel="stylesheet" type="text/css" href="src/css/style.css" />
+    <link rel="stylesheet" href="src/css/css/all.min.css" />
    
 </head>
 
@@ -42,22 +43,27 @@ Released   : 20120624
         </div>
         <div id="page">
             <div id="content">
-                <div id="buscar">
+                <div id="buscar" style="font-size:25px">
                     <label for="search_type">Buscar por: </label><br>
+                    <br>
                     <input id="id" type="number" placeholder="ID de Caso."><input type="checkbox" checked="checked" id="id_search" onchange="idchecked()"><br>
                     <input id="cc" type="number" disabled="true" placeholder="Cédula del paciente."><input type="checkbox" id="cc_search" onchange="ccchecked()"><br><br>
                     <button id="btn" type="button" onclick="search_cases()">Buscar casos</button>
-                    
                 </div>
-                <table id="patientRes" style="text-align:center"></table>
-                
-                <br>
-                
-                <table id="patState"></table>
-                <p>Ubicaciones:</p>
-                <div id="map"></div>
-                <br class="clearfix" />
-                
+                <div id="patList">
+                    <table id="patientRes" style="text-align:center"></table>
+                    <i id="prueba" class="fas fa-angle-double-down"></i>
+                </div>
+                <div id="stateUpdate">
+                    <table id="patState"></table>
+                </div>
+                <!-- <div id="prueba2">  -->
+                    <p style="font-size:25px">Ubicaciones:</p>  
+                    <li>Ubicación de residencia<i class="fas fa-5px fa-map-marker-alt" style="color: rgb(49, 204, 49);"></i></li>
+                    <li>Ubiación de trabajo<i class="fas fa-5px fa-map-marker-alt" style="color: rgb(209, 209, 23);"></i></li>
+                    <div id="map"></div>
+                    <br class="clearfix" />
+                <!-- </div> -->
             </div>
             
             <br class="clearfix" />

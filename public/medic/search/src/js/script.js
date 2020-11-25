@@ -23,21 +23,25 @@ async function search_cases() {
     var scheck3 = true;
     if (id_search.checked) {
         if (id.value.length == 0) {
-            id.style.boxShadow = "0px 0px 10px red";
+            id.style.boxShadow = "0px 0px 10px #209D9D";
             scheck1 = false;
         } else {
             scheck1 = true;
             id.style.boxShadow = "";
         }
+    }else{
+        id.style.boxShadow = ""; 
     }
     if (cc_search.checked) {
         if (cc.value.length == 0) {
-            cc.style.boxShadow = "0px 0px 10px red";
+            cc.style.boxShadow = "0px 0px 10px #209D9D";
             scheck3 = false;
         } else {
             scheck3 = true;
             cc.style.boxShadow = "";
         }
+    }else{
+        cc.style.boxShadow = "";
     }
     if (!(id_search.checked || cc_search.checked)) { return; };
     if (!(scheck1 && scheck3)) { console.log(scheck1, scheck3); return; }
@@ -50,6 +54,8 @@ async function search_cases() {
         search_cc = 0;
     }
     patRes = [];
+    document.getElementById("patList").style.display="block"
+    // document.getElementById("prueba2").style.display="inline"
     document.getElementById("patientRes").innerHTML = '<tr>    <th>ID. Caso</th>    <th>Nombre</th>    <th>Apellido</th>    <th>Cédula</th>    <th>Sexo</th>    <th>Fecha de Nacimiento</th>    <th>Resultado</th>    <th>Fecha de exámen</th></tr>';
     document.getElementById("patState").innerHTML = '';
     const response = await fetch(`/medic/search/filter/${search_id}/${search_cc}`);
@@ -126,6 +132,7 @@ async function pat_indexing(index) {
     act_case = patRes[index];
     const response = await fetch(`/medic/search/states/${patRes[index].casecode}`);
     const data = await response.json();
+    document.getElementById("stateUpdate").style.display="block"
     document.getElementById("patState").innerHTML = "<tr><th>Estado</th><th>Fecha de Actualización</th></tr>";
     data.forEach((patient) => {
         var res_i = document.createElement("tr");

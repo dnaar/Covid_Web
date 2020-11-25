@@ -18,6 +18,51 @@ Released   : 20120624
     width: 98%;
     height: 40vh;
 }
+
+#buscar {
+    display: inline-block;
+    width: 30%;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 12px;
+    position: relative;
+    margin-left: 0;
+    padding: 20px;
+    box-shadow: 0px 0px 15px #209D9D;
+    margin-bottom: 20px;
+}
+#patState {
+    position: relative;
+    display: inline-block;
+    text-align: center;
+}
+#stateUpdate {
+    position: relative;
+    display: none;
+    margin-top: 25px;
+    padding: 10px;
+    width: 95%;
+    height: 100%;
+    border-radius: 6px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.6);
+    margin-bottom: 20px;
+}
+#prueba2 {
+    display: none;
+}
+#patList {
+    margin-left: 0;
+    margin-top: 30px;
+    padding: 10px;
+    width: 95%;
+    border-radius: 6px;
+    display: none;
+    height: auto;
+    text-align: center;
+    position: relative;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.6);
+    margin-bottom: 20px;
+}
 #btn {
     background-color: #209D9D;
     color: #FFFFFF;
@@ -133,7 +178,7 @@ img.pic {
 }
 
 p {
-    margin-bottom: 1.5em;
+    margin-bottom: 0.5em;
 }
 
 ul {
