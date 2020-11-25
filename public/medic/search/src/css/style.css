@@ -13,6 +13,11 @@ Released   : 20120624
     margin: 0;
     padding: 0;
 }
+#map {
+    margin: 20px;
+    width: 98%;
+    height: 40vh;
+}
 #btn {
     background-color: #209D9D;
     color: #FFFFFF;
