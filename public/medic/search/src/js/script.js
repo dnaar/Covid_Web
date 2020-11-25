@@ -5,7 +5,9 @@ const cc = document.getElementById("cc");
 var search_id, search_cc = "";
 var patRes = [];
 var act_case;
-
+var marker_i=''
+var marker_1=''
+var x=1
 function idchecked() {
     id.disabled = !id_search.checked;
     if (!id_search.checked) { id.value = ""; }
@@ -52,7 +54,38 @@ async function search_cases() {
     document.getElementById("patState").innerHTML = '';
     const response = await fetch(`/medic/search/filter/${search_id}/${search_cc}`);
     const data = await response.json();
+    if (data.length == 0) {
+        alert("No se ha encontrado identificación")
+    } else {
+        scheck3 = true;
+        cc.style.boxShadow = "";
+    }
+    var pos_cases = [];
     data.forEach((patient, index) => {
+        
+            newLatLng = patient.res_address.split(',');
+            newLatLng = { lat: parseFloat(newLatLng[0]), lng: parseFloat(newLatLng[1]) };
+            const Icon_i = L.icon({
+                iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-green.png',
+                shadowUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-shadow.png'
+            });
+            const Icon_1 = L.icon({
+                iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-yellow.png',
+                shadowUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-shadow.png'
+            });
+         
+        if (x==0){
+            map.removeLayer(marker_i)
+            map.removeLayer(marker_1)
+            x=1
+        }
+        x=0
+        marker_i = L.marker(newLatLng, { icon: Icon_i, interactive: false }).addTo(map); 
+        newLatLng = patient.job_address.split(',');
+        newLatLng = { lat: parseFloat(newLatLng[0]), lng: parseFloat(newLatLng[1]) };
+        
+        marker_1 = L.marker(newLatLng, { icon: Icon_1, interactive: false }).addTo(map);
+
         var res_i = document.createElement("tr");
         res_i.style.cursor = "pointer";
         res_i.value = index;
@@ -99,7 +132,15 @@ async function pat_indexing(index) {
         res_i.innerHTML = `<tr> <td>${patient.state}</td> <td>${formatDate(patient.state_date)}</td> </tr>`;
         document.getElementById("patState").appendChild(res_i);
     });
-}
+}	
+var osmUrl = 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
+osmAttrib = '&copy; <a href="http://openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+osm = L.tileLayer(osmUrl, {
+    maxZoom: 18,
+    attribution: osmAttrib
+});
+
+var map = L.map('map').setView([4.570868, -74.297333], 4).addLayer(osm);
 
 function clsession() {
     document.forms["log_out"].submit();
