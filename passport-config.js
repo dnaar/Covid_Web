@@ -17,7 +17,9 @@ function initialize(passport) {
             } else {
                 return done(null, user);
             }
-        } catch (e) {}
+        } catch (e) {
+            return done(null, false, { message: 'Invalid username or password' });
+        }
     };
 
     passport.use(new LocalStrategy({ usernameField: 'username' }, verifyUser));
