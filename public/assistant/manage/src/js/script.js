@@ -85,6 +85,9 @@ async function search_cases() {
     document.getElementById("stateUpdate").style.display = "none";
     const response = await fetch(`/assistant/manage/filter/${search_id}/${search_name}/${search_cc}`);
     const data = await response.json();
+    if (data.length == 0) {
+        alert("No se ha encontrado identificación")
+    }
     data.forEach((patient, index) => {
         var res_i = document.createElement("tr");
         res_i.style.cursor = "pointer";
