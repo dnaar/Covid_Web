@@ -44,7 +44,10 @@ server
     .get('/user_login/:username/:password', (req, res) => {
         let sql = `SELECT * FROM user_data where binary username='${req.params.username}' and binary password='${req.params.password}'`;
         let query = database.query(sql, (err, result) => {
-            if (err) throw err;
+            if (err) {
+                res.end();
+                return;
+            }
             res.end(JSON.stringify(result));
         })
     })
@@ -77,6 +80,7 @@ server.post('/admin/addnewuser', checkAuthenticatedAdmin, (req, res) => {
     });
     res.redirect('/admin');
 });
+
 server.post('/assistant/register/newcase', checkAuthenticatedAssistant, (req, res) => {
     let sql = 'INSERT INTO cases SET ?';
     let newCase = { name: req.body.name, lname: req.body.lname, idpatient: parseInt(req.body.id), gender: parseInt(req.body.gender), birthdate: req.body.bdate, res_address: req.body.haddress, job_address: req.body.waddress, test_result: parseInt(req.body.tres), test_date: req.body.tdate, logdate: req.body.logdate };
@@ -87,6 +91,7 @@ server.post('/assistant/register/newcase', checkAuthenticatedAssistant, (req, re
     });
     res.redirect('/assistant');
 });
+
 server.get('/assistant/manage/filter/:id/:name/:cc', checkAuthenticatedAssistant, (req, res) => {
     var options = "";
     plus1 = false;
@@ -129,6 +134,7 @@ server.get('/assistant/manage/states/:id', checkAuthenticatedAssistant, (req, re
         res.end(JSON.stringify(result));
     });
 });
+
 server.get('/assistant/manage/u_states/:id/:state/:date', checkAuthenticatedAssistant, (req, res) => {
     let sql = `INSERT INTO case_state SET ?`;
     let newState = { idcase: parseInt(req.params.id), idstate: parseInt(req.params.state), state_date: req.params.date };
@@ -185,6 +191,7 @@ server.get('/medic/resume/loaddata', checkAuthenticatedMedic, (req, res) => {
         res.end(JSON.stringify(result));
     });
 });
+
 server.get('/medic/resume/loadcases', checkAuthenticatedMedic, (req, res) => {
     let sql = 'SELECT casecode, test_result, res_address FROM cases';
     database.query(sql, (err, result) => {
@@ -212,6 +219,7 @@ server.get('/user/credentials', checkAuthentication, (req, res) => {
         res.end(JSON.stringify(result));
     });
 });
+
 server.get('/api/getCData/:type/:date', (req, res) => {
     var sql;
     if (req.params.type == '0') {
@@ -234,7 +242,6 @@ server.get('/api/getCData/:type/:date', (req, res) => {
         res.end(JSON.stringify(result));
     });
 });
-
 
 // Authentication Functions
 function checkAuthenticatedAdmin(req, res, next) {
@@ -283,7 +290,6 @@ function checkAuthenticatedAssistant(req, res, next) {
     }
 
 }
-
 
 function checkNotAuthenticated(req, res, next) {
     if (!req.isAuthenticated()) {
